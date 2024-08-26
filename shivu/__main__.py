@@ -297,7 +297,6 @@ def main() -> None:
     PORT = int(os.environ.get("PORT", "8443"))
     TOKEN = os.environ.get("TOKEN")
 
-    )
 if __name__ == "__main__":
     shivuu.start()
     LOGGER.info("Bot started")
