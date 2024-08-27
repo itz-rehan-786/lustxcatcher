@@ -13,7 +13,7 @@ from shivu import collection, top_global_groups_collection, group_user_totals_co
 from shivu import application, LOGGER, TOKEN 
 from shivu import set_on_data, set_off_data
 from shivu.modules import ALL_MODULES
-from config import Config
+from config.py import Config
 locks = {}
 message_counters = {}
 spam_counters = {}
