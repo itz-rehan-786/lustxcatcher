@@ -317,6 +317,6 @@ if not TOKEN:
     )
 
 if __name__ == "__main__":
-    Grabberu.start()
+    shivuu.start()
     LOGGER.info("Bot started")
     main()
