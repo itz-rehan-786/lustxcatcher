@@ -13,7 +13,7 @@ from shivu import collection, top_global_groups_collection, group_user_totals_co
 from shivu import application, LOGGER, TOKEN 
 from shivu import set_on_data, set_off_data
 from shivu.modules import ALL_MODULES
-from config.py import Config
+
 locks = {}
 message_counters = {}
 spam_counters = {}
@@ -295,6 +295,8 @@ def main() -> None:
     application.add_handler(CommandHandler('set_on', set_on, block=False))
     application.add_handler(CommandHandler('set_off', set_off, block=False))
     application.add_handler(MessageHandler(filters.ALL, message_counter, block=False))
+    
+TOKEN = "7246514260:AAGRYq6AIHGjKm1-Vbt5UEgeYEcMRDpDm58"
     
     PORT = int(os.environ.get("PORT", "8443"))
     TOKEN = Config.TOKEN
