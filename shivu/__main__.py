@@ -304,7 +304,7 @@ def main() -> None:
         return
     
     # Replace 'your_vps_ip_or_domain' with your actual domain or IP
-    WEBHOOK_URL = f"https://your_vps_ip_or_domain:{PORT}/{TOKEN}"
+    WEBHOOK_URL = f"https://54.253.249.191:{PORT}/{TOKEN}"
     
     # Log the values for debugging
     LOGGER.info(f"PORT: {PORT}")
