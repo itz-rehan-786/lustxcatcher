@@ -296,15 +296,11 @@ def main() -> None:
     application.add_handler(CommandHandler('set_off', set_off, block=False))
     application.add_handler(MessageHandler(filters.ALL, message_counter, block=False))
     
-TOKEN = "7246514260:AAGRYq6AIHGjKm1-Vbt5UEgeYEcMRDpDm58"
-    
     PORT = int(os.environ.get("PORT", "8443"))
-    TOKEN = Config.TOKEN
-    
-    if not TOKEN:
-        LOGGER.error("TOKEN is not set in config.py")
-        return
-    
+    TOKEN = os.environ.get("7246514260:AAGRYq6AIHGjKm1-Vbt5UEgeYEcMRDpDm58")
+if not TOKEN:
+    LOGGER.error("Environment variable TOKEN is not set")
+    return
     # Replace 'your_vps_ip_or_domain' with your actual domain or IP
     WEBHOOK_URL = f"https://54.253.249.191:{PORT}/{TOKEN}"
     
