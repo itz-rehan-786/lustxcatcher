@@ -300,7 +300,6 @@ def main() -> None:
     TOKEN = os.environ.get("7246514260:AAGRYq6AIHGjKm1-Vbt5UEgeYEcMRDpDm58")
 if not TOKEN:
     LOGGER.error("Environment variable TOKEN is not set")
-    return
     # Replace 'your_vps_ip_or_domain' with your actual domain or IP
     WEBHOOK_URL = f"https://54.253.249.191:{PORT}/{TOKEN}"
     
