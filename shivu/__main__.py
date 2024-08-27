@@ -13,6 +13,7 @@ from shivu import collection, top_global_groups_collection, group_user_totals_co
 from shivu import application, LOGGER, TOKEN 
 from shivu import set_on_data, set_off_data
 from shivu.modules import ALL_MODULES
+from config import Config
 locks = {}
 message_counters = {}
 spam_counters = {}
@@ -294,19 +295,22 @@ def main() -> None:
     application.add_handler(CommandHandler('set_on', set_on, block=False))
     application.add_handler(CommandHandler('set_off', set_off, block=False))
     application.add_handler(MessageHandler(filters.ALL, message_counter, block=False))
+    
     PORT = int(os.environ.get("PORT", "8443"))
-    TOKEN = os.environ.get("TOKEN")
-    RENDER_EXTERNAL_URL = os.environ.get("RENDER_EXTERNAL_URL")
-    if not TOKEN or not RENDER_EXTERNAL_URL:
-        LOGGER.error("Environment variables TOKEN or RENDER_EXTERNAL_URL are not set")
+    TOKEN = Config.TOKEN
+    
+    if not TOKEN:
+        LOGGER.error("TOKEN is not set in config.py")
         return
-    # Set the webhook URL
-    WEBHOOK_URL = f"{RENDER_EXTERNAL_URL}/{TOKEN}"
+    
+    # Replace 'your_vps_ip_or_domain' with your actual domain or IP
+    WEBHOOK_URL = f"https://your_vps_ip_or_domain:{PORT}/{TOKEN}"
+    
     # Log the values for debugging
     LOGGER.info(f"PORT: {PORT}")
     LOGGER.info(f"TOKEN: {TOKEN}")
-    LOGGER.info(f"RENDER_EXTERNAL_URL: {RENDER_EXTERNAL_URL}")
     LOGGER.info(f"WEBHOOK_URL: {WEBHOOK_URL}")
+    
     # Start webhook
     application.run_webhook(
         listen="0.0.0.0",
@@ -314,7 +318,8 @@ def main() -> None:
         url_path=TOKEN,
         webhook_url=WEBHOOK_URL
     )
-if __name__ == "__main__":
+    if __name__ == "__main__":
     shivuu.start()
     LOGGER.info("Bot started")
     main()
+    
