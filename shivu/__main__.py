@@ -318,8 +318,8 @@ def main() -> None:
         url_path=TOKEN,
         webhook_url=WEBHOOK_URL
     )
-    if __name__ == "__main__":
-    shivuu.start()
+
+if __name__ == "__main__":
+    Grabberu.start()
     LOGGER.info("Bot started")
     main()
-    
