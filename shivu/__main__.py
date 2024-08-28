@@ -291,7 +291,7 @@ async def guess(update: Update, context: CallbackContext) -> None:
         await update.message.reply_text('𝙋𝙡𝙚𝙖𝙨𝙚 𝙒𝙧𝙞𝙩𝙚 𝘾𝙤𝙧𝙧𝙚𝙘𝙩 𝙉𝙖𝙢𝙚... ❌️')
 def main() -> None:
     """Run bot."""
-    application = Application.builder().token(Config.TOKEN).build()
+   
     
     application.add_handler(CommandHandler(["slave"], guess))
     application.add_handler(CommandHandler('set_on', set_on))
