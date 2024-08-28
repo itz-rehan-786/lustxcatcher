@@ -291,32 +291,16 @@ async def guess(update: Update, context: CallbackContext) -> None:
         await update.message.reply_text('𝙋𝙡𝙚𝙖𝙨𝙚 𝙒𝙧𝙞𝙩𝙚 𝘾𝙤𝙧𝙧𝙚𝙘𝙩 𝙉𝙖𝙢𝙚... ❌️')
 def main() -> None:
     """Run bot."""
-    application.add_handler(CommandHandler(["slave"], guess, block=False))
-    application.add_handler(CommandHandler('set_on', set_on, block=False))
-    application.add_handler(CommandHandler('set_off', set_off, block=False))
-    application.add_handler(MessageHandler(filters.ALL, message_counter, block=False))
+    application = Application.builder().token(Config.TOKEN).build()
     
-    PORT = int(os.environ.get("PORT", "8443"))
-    TOKEN = os.environ.get("7246514260:AAGRYq6AIHGjKm1-Vbt5UEgeYEcMRDpDm58")
-if not TOKEN:
-    LOGGER.error("Environment variable TOKEN is not set")
-    # Replace 'your_vps_ip_or_domain' with your actual domain or IP
-    WEBHOOK_URL = f"https://54.253.249.191:{PORT}/{TOKEN}"
+    application.add_handler(CommandHandler(["slave"], guess))
+    application.add_handler(CommandHandler('set_on', set_on))
+    application.add_handler(CommandHandler('set_off', set_off))
+    application.add_handler(MessageHandler(filters.ALL, message_counter))
     
-    # Log the values for debugging
-    LOGGER.info(f"PORT: {PORT}")
-    LOGGER.info(f"TOKEN: {TOKEN}")
-    LOGGER.info(f"WEBHOOK_URL: {WEBHOOK_URL}")
-    
-    # Start webhook
-    application.run_webhook(
-        listen="0.0.0.0",
-        port=PORT,
-        url_path=TOKEN,
-        webhook_url=WEBHOOK_URL
-    )
+    print("Bot starting...")
+    application.run_polling(allowed_updates=Update.ALL_TYPES)
 
 if __name__ == "__main__":
-    shivuu.start()
-    LOGGER.info("Bot started")
     main()
+    print("Bot started")
