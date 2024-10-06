@@ -1,0 +1,57 @@
+𖤍 Ɲ ᴀ ʀ᷍ ᴜ ᴛ ᴏ ↼〲ᶻˣ |🤴:
+► EVAL (in 19.676ms)
+from . import Blade_cmd
+import asyncio
+
+# Channel ID to send responses to
+channel_id = -1002468718769
+
+# Bot username
+bot_username = "@Slave_waifu_bot"
+
+@Blade_cmd(pattern=".ss (.*)")
+async def send_command(event):
+    # Get the starting and ending numbers from the command
+    args = event.pattern_match.group(1).split()
+    start_num = int(args[0])
+    end_num = int(args[1])
+
+    # Send the command to the bot
+    for i in range(start_num, end_num + 1):
+        async with event.client.conversation(bot_username) as conv:
+            await conv.send_message(f"/s {i}")
+            response = await conv.get_response()
+            if response.media:
+                # Remove the last line from the caption
+                caption_lines = response.text.split('\n')
+                caption_lines = caption_lines[:-1]
+                caption = '\n'.join(caption_lines)
+                # Add the SENDING NUMBER line to the caption
+                caption = f"🆔 : SENDING NUMBER {i}\n{caption}"
+                await event.client.send_file(channel_id, response.media, caption=caption)
+            else:
+                await event.client.send_message(channel_id, response.text)
+        await asyncio.sleep(1)
+
+@Blade_cmd(pattern=".s (.*)")
+async def send_single_command(event):
+    # Get the number from the command
+    num = event.pattern_match.group(1)
+
+    # Send the command to the bot
+    async with event.client.conversation(bot_username) as conv:
+        await conv.send_message(f"/s {num}")
+        response = await conv.get_response()
+        if response.media:
+            # Remove the last line from the caption
+            caption_lines = response.text.split('\n')
+            caption_lines = caption_lines[:-1]
+            caption = '\n'.join(caption_lines)
+            # Add the SENDING NUMBER line to the caption
+            caption = f"🆔 : SENDING NUMBER {num}\n{caption}"
+            await event.client.send_file(channel_id, response.media, caption=caption)
+        else:
+            await event.client.send_message(channel_id, response.text) 
+
+► OUTPUT: 
+Success
