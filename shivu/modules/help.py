@@ -19,7 +19,7 @@ async def help_gift_command(update: Update, context: CallbackContext):
          InlineKeyboardButton("Levels", callback_data=f'level_{sender_id}')],
         [InlineKeyboardButton("Games", callback_data=f'game_{sender_id}'),
          InlineKeyboardButton("Gift", callback_data=f'gift_{sender_id}')],
-        [InlineKeyboardButton("Slaves", callback_data=f'shadow_army_{sender_id}'),
+        [InlineKeyboardButton("characters", callback_data=f'shadow_army_{sender_id}'),
          InlineKeyboardButton("Beast", callback_data=f'beast_{sender_id}')],
         [InlineKeyboardButton("Pass", callback_data=f'pass_{sender_id}')]
     ]
@@ -176,7 +176,7 @@ async def help_callback_query(update: Update, context: CallbackContext):
                  InlineKeyboardButton("Levels", callback_data=f'level_{user_id}')],
                 [InlineKeyboardButton("Games", callback_data=f'game_{user_id}'),
                  InlineKeyboardButton("Gift", callback_data=f'gift_{user_id}')],
-                [InlineKeyboardButton("Slaves", callback_data=f'shadow_army_{user_id}'),
+                [InlineKeyboardButton("characters", callback_data=f'shadow_army_{user_id}'),
                  InlineKeyboardButton("Beast", callback_data=f'beast_{user_id}')],
                 [InlineKeyboardButton("Pass", callback_data=f'pass_{user_id}')]
             ]
