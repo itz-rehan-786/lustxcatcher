@@ -41,13 +41,13 @@ async def start(update: Update, context: CallbackContext) -> None:
             await user_collection.update_one({"id": user_id}, {"$set": {"first_name": first_name, "username": username}})
 
     if update.effective_chat.type == "private":
-        caption = f"""Hey {first_name}✨\n I'm ˹ʟᴜꜱᴛ ✘ ᴄᴀᴛᴄʜᴇʀ˼. I Am Anime Based Game Bot! Want to get help? Do `/help` !\nWant to request/report bugs? Click on the `Support` button!"""
+        caption = f"""Hey {first_name}✨\n I'm Sung Jin Woo. I Am Anime Based Game Bot! Want to get help? Do `/help` !\nWant to request/report bugs? Click on the `Support` button!"""
         
         keyboard = [
-            [InlineKeyboardButton(" SUPPORT ", url=f'https://t.me/lustsupport'),
+            [InlineKeyboardButton(" SUPPORT ", url=f'https://t.me/ur_hell_paradise'),
              InlineKeyboardButton(" ADD ME ", url=f'https://t.me/lustXcatcherrobot?startgroup=new')],
-            [InlineKeyboardButton(" UPDATE ", url=f'https://t.me/Lustxupdate')],
-            [InlineKeyboardButton(" CONTACT ", url=f'https://t.me/WTF_BOOB'),
+            [InlineKeyboardButton(" UPDATE ", url=f'https://t.me/sungupdate')],
+            [InlineKeyboardButton(" CONTACT ", url=f'https://t.me/ituuw'),
              InlineKeyboardButton(" SOURCE ", url=f'https://www.youtube.com/watch?v=l1hPRV0_cwc')]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
