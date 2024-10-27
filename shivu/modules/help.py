@@ -24,7 +24,7 @@ async def help_gift_command(update: Update, context: CallbackContext):
         [InlineKeyboardButton("Pass", callback_data=f'pass_{sender_id}')]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    photo_url = "https://te.legra.ph/file/b6661a11573417d03b4b4.png"
+    photo_url = "https://graph.org//file/6a197da7a1e166e62cbda.jpg"
     await context.bot.send_photo(
         chat_id=message.chat_id,
         photo=photo_url,
