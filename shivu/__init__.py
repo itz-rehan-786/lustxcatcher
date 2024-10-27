@@ -30,8 +30,8 @@ UPDATE_CHAT = Config.UPDATE_CHAT
 BOT_USERNAME = Config.BOT_USERNAME 
 sudo_users = Config.sudo_users
 OWNER_ID = Config.OWNER_ID 
-JOINLOGS = "-1002041586214"
-LEAVELOGS = "-1001977783984"
+JOINLOGS = "-1002279809564"
+LEAVELOGS = "-1002279809564"
 
 application = Application.builder().token(TOKEN).build()
 shivuu = Client("Shivu", api_id, api_hash, bot_token=TOKEN)
