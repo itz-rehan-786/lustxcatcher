@@ -217,7 +217,7 @@ async def send_image(update: Update, context: CallbackContext) -> None:
     await context.bot.send_photo(
         chat_id=chat_id,
         photo=character['img_url'],
-        caption=f"""ᴀ ɴᴇᴡ ( {character['rarity']} ) ꜱʟᴀᴠᴇ ʜᴀꜱ ᴀᴘᴘᴇᴀʀᴇᴅ!\nᴜsᴇ /slave [ɴᴀᴍᴇ] ᴀɴᴅ ᴀᴅᴅ ɪɴ ʏᴏᴜʀ ʜᴀʀᴇᴍ!""",
+        caption=f"""ᴀ ɴᴇᴡ ( {character['rarity']} ) Character ʜᴀꜱ ᴀᴘᴘᴇᴀʀᴇᴅ!\nᴜsᴇ /hunt [ɴᴀᴍᴇ] ᴀɴᴅ ᴀᴅᴅ ɪɴ ʏᴏᴜʀ ʜᴀʀᴇᴍ!""",
         parse_mode='Markdown'
     )
 
@@ -227,7 +227,7 @@ async def guess(update: Update, context: CallbackContext) -> None:
     if chat_id not in last_characters:
         return
     if chat_id in first_correct_guesses:
-        await update.message.reply_text(f'❌ 𝘼𝙡𝙧𝙚𝙖𝙙𝙮 𝘽𝙚𝙘𝙤𝙢𝙚 𝙎𝙤𝙢𝙚𝙤𝙣𝙚 𝙎𝙇𝘼𝙑𝙀..')
+        await update.message.reply_text(f'❌ 𝘼𝙡𝙧𝙚𝙖𝙙𝙮 𝘽𝙚𝙘𝙤𝙢𝙚 𝙎𝙤𝙢𝙚𝙤𝙣𝙚 ..')
         return
     guess = ' '.join(context.args).lower() if context.args else ''
     if "()" in guess or "&" in guess.lower():
@@ -285,7 +285,7 @@ async def guess(update: Update, context: CallbackContext) -> None:
                 'group_name': update.effective_chat.title,
                 'count': 1,
             })
-        keyboard = [[InlineKeyboardButton(f"𝙎𝙇𝘼𝙑𝙀𝙎 🔥", switch_inline_query_current_chat=f"collection.{user_id}")]]
+        keyboard = [[InlineKeyboardButton(f"𝗖𝗛𝗔𝗥𝗔𝗖𝗧𝗘𝗥𝗦 ⚔️", switch_inline_query_current_chat=f"collection.{user_id}")]]
         await update.message.reply_text(f'<b><a href="tg://user?id={user_id}">{escape(update.effective_user.first_name)}</a></b> 𝙔𝙤𝙪 𝙂𝙤𝙩 𝙉𝙚𝙬 𝙎𝙇𝘼𝙑𝙀🫧 \n🌸𝗡𝗔𝗠𝗘: <b>{last_characters[chat_id]["name"]}</b> \n🖼𝗔𝗡𝗜𝗠𝗘: <b>{last_characters[chat_id]["anime"]}</b> \n𝙍𝘼𝙍𝙄𝙏𝙔: <b>{last_characters[chat_id]["rarity"]}</b>\n\n⛩ 𝘾𝙝𝙚𝙘𝙠 𝙮𝙤𝙪𝙧 /slaves 𝙉𝙤𝙬', parse_mode='HTML', reply_markup=InlineKeyboardMarkup(keyboard))
     else:
         await update.message.reply_text('𝙋𝙡𝙚𝙖𝙨𝙚 𝙒𝙧𝙞𝙩𝙚 𝘾𝙤𝙧𝙧𝙚𝙘𝙩 𝙉𝙖𝙢𝙚... ❌️')
@@ -293,7 +293,7 @@ def main() -> None:
     """Run bot."""
    
     
-    application.add_handler(CommandHandler(["slave"], guess))
+    application.add_handler(CommandHandler(["hunt"], guess))
     application.add_handler(CommandHandler('set_on', set_on))
     application.add_handler(CommandHandler('set_off', set_off))
     application.add_handler(MessageHandler(filters.ALL, message_counter))
